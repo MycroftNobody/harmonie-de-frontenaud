@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonie de Frontenaud - Société Musicale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bleu-ciel': '#87CEEB',
+                        'bleu-ciel-dark': '#4682B4',
+                        'vert-prairie': '#7CB342',
+                        'vert-prairie-dark': '#558B2F',
+                        'jaune-mais': '#FFD54F',
+                        'jaune-mais-dark': '#FFA000',
+                        'gris-elegant': '#374151'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'slide-in': 'slideIn 0.6s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-gradient {
+            /* L'ancien dégradé est remplacé par votre image */
+            background-image: url("votre lien de l'image ici");
+            background-size: cover;       /* L'image couvre toute la section */
+            background-position: center;  /* L'image est centrée */
+            background-repeat: no-repeat; /* L'image ne se répète pas */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* L'ancien motif SVG est remplacé par une surcouche sombre pour la lisibilité du texte */
+            background: rgba(0, 0, 0, 0.4); /* Vous pouvez ajuster l'opacité (0.4) au besoin */
+            /* L'animation 'float' est retirée car elle s'appliquait au motif SVG */
+            /* animation: float 20s linear infinite; */
+        }
+        
+        .music-note {
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gradient-border {
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #4682B4, #558B2F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #87CEEB, #7CB342);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #87CEEB, #7CB342, #FFD54F);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -8px;
+            top: 1rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #4682B4;
+            box-shadow: 0 0 0 4px rgba(70, 130, 180, 0.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(135, 206, 235, 0.6);
+            }
+        }
+        
+        .video-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #87CEEB, #7CB342, #FFD54F, transparent);
+            margin: 4rem 0;
+        }
+        
+        .pricing-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .pricing-card:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+<body class="h-full bg-gradient-to-br from-gray-50 to-blue-50 font-sans">
+    <header class="glass-effect shadow-xl sticky top-0 z-50 border-b border-white/20">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center group">
+                    <div class="music-note text-bleu-ciel-dark text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">🎵</div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gris-elegant">Harmonie de Frontenaud</h1>
+                        <p class="text-sm text-gray-500 font-light">Société Musicale depuis 1923</p>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <button onclick="showPage('accueil')" class="nav-link active text-bleu-ciel-dark px-4 py-2 text-sm font-medium">Accueil</button>
+                        <button onclick="showPage('histoire')" class="nav-link text-gris-elegant hover:text-bleu-ciel-dark px-4 py-2 text-sm font-medium">Notre Histoire</button>
+                        <button onclick="showPage('ecole')" class="nav-link text-gris-elegant hover:text-bleu-ciel-dark px-4 py-2 text-sm font-medium">École de Musique</button>
+                        <button onclick="showPage('contact')" class="nav-link text-gris-elegant hover:text-bleu-ciel-dark px-4 py-2 text-sm font-medium">Contact</button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gris-elegant hover:text-bleu-ciel-dark focus:outline-none transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/90 backdrop-blur-sm rounded-b-2xl">
+                    <button onclick="showPage('accueil'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">Accueil</button>
+                    <button onclick="showPage('histoire'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">Notre Histoire</button>
+                    <button onclick="showPage('ecole'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">École de Musique</button>
+                    <button onclick="showPage('contact'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">Contact</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="min-h-full">
+        <!-- Page Accueil -->
+        <div id="page-accueil" class="page-content">
+            <section class="hero-gradient text-white py-32 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                    <div class="fade-in">
+                        <div class="inline-block mb-6">
+                            <span class="text-6xl md:text-8xl music-note">🎼</span>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">Harmonie de<br><span class="text-yellow-200">Frontenaud</span></h1>
+                        <div class="text-xl md:text-2xl mb-12 italic max-w-5xl mx-auto leading-relaxed font-light bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                            "La société prend le nom de Société Musicale de Frontenaud. Elle n'a d'autre but que de développer le goût de l'art musical et de donner à la jeunesse une distraction saine et intelligente"
+                        </div>
+                        <p class="text-lg opacity-90 font-medium">Art. 1 des statuts - 13 mai 1923</p>
+                    </div>
+                </div>
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </section>
+
+            <section class="py-24 bg-white relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="fade-in text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-8">Une histoire centenaire...</h2>
+                        <div class="max-w-5xl mx-auto text-xl text-gris-elegant leading-relaxed font-light">
+                            <p class="mb-8">Depuis plus de 100 ans, l'Harmonie de Frontenaud fait vivre la musique au cœur de notre village. Née de la passion de musiciens engagés, elle réunit aujourd'hui <span class="font-semibold text-bleu-ciel-dark">25 membres</span> unis par l'amour de la musique et du partage.</p>
+                            <p class="text-lg">Une tradition vivante, portée par des générations de bénévoles et de passionnés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-divider max-w-4xl mx-auto"></div>
+            </section>
+
+            <section class="py-24 bg-gradient-to-br from-blue-50 to-green-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="fade-in text-center mb-16">
+                        <h2 class="text-4xl font-bold text-gris-elegant mb-8">Concert du Centenaire</h2>
+                        <p class="text-xl text-gris-elegant mb-12 font-light max-w-3xl mx-auto">Revivez les moments forts de notre concert exceptionnel célébrant 100 ans d'histoire musicale</p>
+                        <div class="max-w-5xl mx-auto">
+                            <div class="video-container relative w-full rounded-3xl overflow-hidden shadow-2xl" style="padding-bottom: 56.25%;">
+                                <iframe 
+                                    class="absolute top-0 left-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/sXO87eWb_qw?si=TsOZmgqlSvwKFa7T&start=1450" 
+                                    title="Concert du Centenaire - Harmonie de Frontenaud" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-24 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="fade-in">
+                        <h2 class="text-4xl font-bold text-gris-elegant text-center mb-16">Nos prochaines sorties</h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div class="gradient-border card-hover p-8 text-center group relative z-10">
+                                <div class="relative z-20">
+                                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎖️</div>
+                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Commémoration 11 novembre</h3>
+                                    <p class="text-bleu-ciel-dark font-semibold mb-2">Dimanche 09 novembre 2025</p>
+                                    <p class="text-sm text-gray-500">Monument aux morts de Frontenaud</p>
+                                </div>
+                            </div>
+                            <div class="gradient-border card-hover p-8 text-center group relative z-10">
+                                <div class="relative z-20">
+                                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎄</div>
+                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Aubade au marché de Noël</h3>
+                                    <p class="text-vert-prairie-dark font-semibold mb-2">Samedi 13 décembre 2025</p>
+                                    <p class="text-sm text-gray-500">Frontenaud - Bourg</p>
+                                </div>
+                            </div>
+                            <div class="gradient-border card-hover p-8 text-center group relative z-10">
+                                <div class="relative z-20">
+                                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎲</div>
+                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Loto de l'Harmonie</h3>
+                                    <p class="text-jaune-mais-dark font-semibold mb-2">Dimanche 1er mars 2026</p>
+                                    <p class="text-sm text-gray-500">Frontenaud - Salle polyvalente</p>
+                                </div>
+                            </div>
+                            <div class="gradient-border card-hover p-8 text-center group relative z-10">
+                                <div class="relative z-20">
+                                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎖️</div>
+                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Commémoration du 19 mars</h3>
+                                    <p class="text-bleu-ciel-dark font-semibold mb-2">Dimanche 22 mars 2026</p>
+                                    <p class="text-sm text-gray-500">Monument aux morts de Frontenaud</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page Notre Histoire -->
+        <div id="page-histoire" class="page-content hidden">
+            <section class="py-24 bg-gradient-to-br from-blue-50 to-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="fade-in text-center mb-20">
+                        <h1 class="text-5xl font-bold text-gradient mb-8">Notre Histoire</h1>
+                        <p class="text-2xl text-gris-elegant font-light">L'Harmonie de Frontenaud en quelques dates clés...</p>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto space-y-16">
+                        <div class="fade-in timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="gradient-border p-10 relative z-10">
+                                <div class="relative z-20">
+                                    <div class="flex items-center mb-6">
+                                        <div class="bg-gradient-to-r from-bleu-ciel-dark to-bleu-ciel text-white rounded-2xl w-20 h-20 flex items-center justify-center text-2xl font-bold mr-8 shadow-lg">1923</div>
+                                        <h2 class="text-3xl font-bold text-gris-elegant">Création de l'Harmonie de Frontenaud</h2>
+                                    </div>
+                                    <div class="text-gris-elegant leading-relaxed text-lg font-light space-y-4">
+                                        <p>L'Harmonie de Frontenaud est née au début du XXè siècle sous l'impulsion de <strong class="text-bleu-ciel-dark">Joseph Lonjarret</strong>, un frontenalien jardinier de profession. Le groupe s'est dans un premier temps formé de manière informelle, sans structure officielle. La première sortie publique de l'harmonie ainsi constituée, composée alors d'une vingtaine de musiciens, a eu lieu en 1922 lors de l'inauguration du monument aux morts.</p>
+                                        <p>Sous l'initiative de l'ancien maire, Monsieur Badot, et de son secrétaire (également instituteur) Eugène Gandroz, l'Harmonie a été officiellement constituée le <strong class="text-bleu-ciel-dark">13 mai 1923</strong>, avec l'enregistrement de ses statuts à la sous-préfecture de Louhans.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fade-in timeline-item">
+                            <div class="timeline-dot" style="border-color: #558B2F;"></div>
+                            <div class="gradient-border p-10 relative z-10">
+                                <div class="relative z-20">
+                                    <div class="flex items-center mb-6">
+                                        <div class="bg-gradient-to-r from-vert-prairie-dark to-vert-prairie text-white rounded-2xl w-20 h-20 flex items-center justify-center text-2xl font-bold mr-8 shadow-lg">1970</div>
+                                        <h2 class="text-3xl font-bold text-gris-elegant">La renaissance</h2>
+                                    </div>
+                                    <div class="text-gris-elegant leading-relaxed text-lg font-light space-y-4">
+                                        <p>Au fil des années, les chefs et présidents se sont succédé, marquant chacun à leur manière l'histoire de l'Harmonie. En 1970, l'Harmonie fût confrontée à une période difficile : faute de musiciens, la dissolution a semblé un temps, inévitable...</p>
+                                        <p>C'était sans compter sur la volonté indéfectible de <strong class="text-vert-prairie-dark">Michel Vandroux</strong>, qui sera également maire de Frontenaud pendant 20 ans, qui, avec une poignée de musiciens passionnés, a su redonner vie à l'ensemble.</p>
+                                        <p>Grâce à son énergie et à son dévouement, il dirigera l'Harmonie pendant <strong class="text-vert-prairie-dark">45 ans</strong>, devenant ainsi l'âme même de notre groupe et certainement le membre le plus engagé et fidèle que nous ayons connu. Son implication allant bien au-delà de la direction de l'orchestre ; il assurera aussi les cours de solfège et de trompette à l'école de musique, insufflant une passion contagieuse à chaque élève.</p>
+                                        <p>En hommage à son incroyable dévouement, notre salle de répétitions porte aujourd'hui son nom, un symbole de gratitude et de reconnaissance pour tout ce qu'il a apporté à notre Harmonie.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fade-in timeline-item">
+                            <div class="timeline-dot" style="border-color: #FFA000;"></div>
+                            <div class="gradient-border p-10 relative z-10">
+                                <div class="relative z-20">
+                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8">L'Harmonie de Frontenaud : 100 ans d'histoire et de passion musicale</h2>
+                                    <div class="text-gris-elegant leading-relaxed text-lg font-light space-y-6">
+                                        <p>Aujourd'hui, l'Harmonie de Frontenaud réunit <strong class="text-jaune-mais-dark">25 musiciens</strong>, unis par la même passion et la même envie de transmettre l'art musical. Grâce à l'école de musique, tous ceux qui souhaitent apprendre la musique, peuvent rejoindre « nos rangs ». Plus de 100 ans d'histoire ont été célébrés en 2023 par un concert exceptionnel rassemblant plus de 100 musiciens à Frontenaud, une occasion mémorable de fêter ce siècle de musique.</p>
+                                        
+                                        <div class="bg-white rounded-2xl p-8 mt-8 border border-gray-200 shadow-sm">
+                                            <h3 class="font-bold text-xl mb-4 text-gris-elegant">Les événements musicaux de l'Harmonie : un partage de passion et de convivialité</h3>
+                                            <div class="grid md:grid-cols-2 gap-4">
+                                                <ul class="space-y-3">
+                                                    <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Concerts de printemps</li>
+                                                    <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎶</span> Fête de la musique</li>
+                                                    <li class="flex items-center"><span class="text-jaune-mais-dark mr-2">🎺</span> Fête patronale</li>
+                                                </ul>
+                                                <ul class="space-y-3">
+                                                    <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎖️</span> Commémorations</li>
+                                                    <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎼</span> Sainte-Cécile</li>
+                                                </ul>
+                                            </div>
+                                            <p class="mt-6 italic text-gris-elegant">Les rendez-vous sont nombreux, et chaque événement permet aux Frontenaliens, ainsi qu'aux musiciens et habitants de Bresse et d'ailleurs, de partager ensemble un moment musical.</p>
+                                        </div>
+                                        
+                                        <div class="mt-10">
+                                            <h3 class="font-bold text-xl mb-4 text-gris-elegant">Un siècle de passion grâce à l'engagement de chacun</h3>
+                                            <p>L'Harmonie de Frontenaud existe depuis plus d'un siècle grâce à la passion des générations successives de musiciens, mais aussi de ceux qui ont su porter cet ensemble devenu une véritable institution dans notre village. À tous ceux qui, par leur travail, leur dévouement et leur engagement, ont permis à cette aventure de perdurer, nous adressons un immense merci. Que chacun, qu'il soit musicien, membre honoraire ou bénévole, sache à quel point sa contribution est précieuse pour faire vivre, encore longtemps, notre belle association.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page École de Musique -->
+        <div id="page-ecole" class="page-content hidden">
+            <section class="py-24 bg-gradient-to-br from-yellow-50 to-blue-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="fade-in text-center mb-20">
+                        <h1 class="text-5xl font-bold text-gradient mb-8">École de Musique</h1>
+                        <p class="text-2xl text-gris-elegant font-light max-w-4xl mx-auto">L'école de musique de Frontenaud est ouverte à tous, enfants comme adultes. Nous proposons une formation musicale complète et l'apprentissage de divers instruments.</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-16">
+                        <div class="fade-in space-y-12">
+                            <div class="gradient-border p-10 relative z-10">
+                                <div class="relative z-20">
+                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8 flex items-center">
+                                        <span class="text-4xl mr-4">📅</span> Inscriptions
+                                    </h2>
+                                    <p class="text-gris-elegant mb-6 text-lg font-light">Les inscriptions ont lieu tous les ans le <strong class="text-bleu-ciel-dark">premier samedi de septembre</strong> à Frontenaud.</p>
+                                    
+                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Informations pour le jour de l'inscription :</h3>
+                                    <div class="space-y-4">
+                                        <div class="flex items-start">
+                                            <div class="w-2 h-2 bg-bleu-ciel rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <p class="text-gris-elegant">L'élève mineur doit être accompagné par son responsable légal</p>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="w-2 h-2 bg-vert-prairie rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <p class="text-gris-elegant">Le niveau de l'élève détermine la formule (1, 2, 3 ou 4)</p>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="w-2 h-2 bg-jaune-mais rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <p class="text-gris-elegant">Les élèves n'ayant jamais suivi de formation musicale doivent obligatoirement débuter par la Formule 1</p>
+                                        </div>
+                                        <div class="flex items-start">
+                                            <div class="w-2 h-2 bg-bleu-ciel rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <p class="text-gris-elegant">L'année suivante, la formation instrumentale peut débuter</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gradient-border p-10 relative z-10">
+                                <div class="relative z-20">
+                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8 flex items-center">
+                                        <span class="text-4xl mr-4">🎼</span> Instruments Enseignés
+                                    </h2>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                                            <h3 class="font-bold text-lg mb-4 text-bleu-ciel-dark">Vents</h3>
+                                            <ul class="space-y-2">
+                                                <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Flûte traversière</li>
+                                                <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Clarinette</li>
+                                                <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Saxophone</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                                            <h3 class="font-bold text-lg mb-4 text-vert-prairie-dark">Cuivres</h3>
+                                            <ul class="space-y-2">
+                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Trompette</li>
+                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Bugle</li>
+                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Euphonium</li>
+                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Tuba</li>
+                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Trombone</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 md:col-span-2">
+                                            <h3 class="font-bold text-lg mb-4 text-jaune-mais-dark">Percussions</h3>
+                                            <div class="flex flex-wrap gap-4">
+                                                <span class="flex items-center"><span class="text-jaune-mais-dark mr-2">🥁</span> Batterie</span>
+                                                <span class="flex items-center"><span class="text-jaune-mais-dark mr-2">🥁</span> Percussions</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fade-in">
+                            <div class="gradient-border p-10 relative z-10">
+                                <div class="relative z-20">
+                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8 flex items-center">
+                                        <span class="text-4xl mr-4">💰</span> Tarifs
+                                    </h2>
+                                    
+                                    <div class="space-y-6">
+                                        <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="flex justify-between items-center">
+                                                <div>
+                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°1</h3>
+                                                    <p class="text-sm text-gris-elegant">Formation musicale</p>
+                                                </div>
+                                                <span class="font-bold text-2xl text-bleu-ciel-dark">135 €<span class="text-sm font-normal"> / an</span></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="flex justify-between items-center">
+                                                <div>
+                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°2</h3>
+                                                    <p class="text-sm text-gris-elegant">Formation musicale + instrumentale 30 min</p>
+                                                </div>
+                                                <span class="font-bold text-2xl text-vert-prairie-dark">192 €<span class="text-sm font-normal"> / an</span></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="flex justify-between items-center">
+                                                <div>
+                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°3</h3>
+                                                    <p class="text-sm text-gris-elegant">Formation musicale + instrumentale 45 min</p>
+                                                </div>
+                                                <span class="font-bold text-2xl text-jaune-mais-dark">231 €<span class="text-sm font-normal"> / an</span></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="flex justify-between items-center">
+                                                <div>
+                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°4</h3>
+                                                    <p class="text-sm text-gris-elegant">Formation instrumentale seule</p>
+                                                </div>
+                                                <span class="font-bold text-2xl text-bleu-ciel-dark">171 €<span class="text-sm font-normal"> / an</span></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="flex justify-between items-center">
+                                                <div>
+                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°5</h3>
+                                                    <p class="text-sm text-gris-elegant">Seconde formation instrumentale</p>
+                                                </div>
+                                                <span class="font-bold text-2xl text-vert-prairie-dark">99 €<span class="text-sm font-normal"> / an</span></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="flex justify-between items-center">
+                                                <div>
+                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°6</h3>
+                                                    <p class="text-sm text-gris-elegant">Orchestre "junior"</p>
+                                                </div>
+                                                <span class="font-bold text-2xl text-jaune-mais-dark">78 €<span class="text-sm font-normal"> / an</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-red-50 border border-red-200 rounded-2xl p-6 mt-8">
+                                        <h3 class="font-semibold text-red-800 mb-3 flex items-center">
+                                            <span class="text-xl mr-2">⚠️</span> Note importante sur les tarifs
+                                        </h3>
+                                        <p class="text-red-700">Un tarif non préférentiel de <strong>850 € / an</strong> s'applique aux élèves dont les parents (ou tuteurs légaux) ne participent pas aux événements de l'Harmonie de Frontenaud.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page Contact -->
+        <div id="page-contact" class="page-content hidden">
+            <section class="py-24 bg-gradient-to-br from-green-50 to-blue-50">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="fade-in text-center mb-20">
+                        <h1 class="text-5xl font-bold text-gradient mb-8">Contact</h1>
+                        <p class="text-2xl text-gris-elegant font-light">Vous souhaitez nous contacter ?</p>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto">
+                        <div class="fade-in grid md:grid-cols-2 gap-12">
+                            <div class="gradient-border p-10 text-center group card-hover relative z-10">
+                                <div class="relative z-20">
+                                    <div class="text-6xl mb-8 group-hover:scale-110 transition-transform duration-300">📧</div>
+                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8">Nous écrire</h2>
+                                    <div class="space-y-6">
+                                        <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="text-center">
+                                                <p class="font-semibold text-gris-elegant text-lg mb-2">Email</p>
+                                                <a href="mailto:contact@harmoniedefrontenaud.fr" class="text-bleu-ciel-dark hover:text-bleu-ciel transition-colors text-lg">contact@harmoniedefrontenaud.fr</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gradient-border p-10 text-center group card-hover relative z-10">
+                                <div class="relative z-20">
+                                    <div class="text-6xl mb-8 group-hover:scale-110 transition-transform duration-300">📍</div>
+                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8">Nous trouver</h2>
+                                    <div class="space-y-6">
+                                        <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                                            <div class="text-center">
+                                                <p class="font-semibold text-gris-elegant text-lg mb-2">Adresse</p>
+                                                <p class="text-gris-elegant text-lg leading-relaxed">Place de la Mairie<br>71580 Frontenaud<br>FRANCE</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gradient-to-r from-gris-elegant to-gray-800 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <span class="text-3xl mr-3">🎵</span>
+                        <div>
+                            <h3 class="text-xl font-bold">Société Musicale de Frontenaud</h3>
+                            <p class="text-sm text-gray-300">Depuis 1923</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">Place de la Mairie<br>71580 Frontenaud<br>FRANCE</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contact</h3>
+                    <p class="text-gray-300">
+                        <a href="mailto:contact@harmoniedefrontenaud.fr" class="hover:text-bleu-ciel transition-colors">contact@harmoniedefrontenaud.fr</a>
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Informations légales</h3>
+                    <button onclick="showLegalNotice()" class="text-gray-300 hover:text-bleu-ciel transition-colors">Consulter les mentions légales</button>
+                </div>
+            </div>
+            <div class="section-divider mt-12 mb-8"></div>
+            <div class="text-center text-gray-400">
+                <p>&copy; 2024 Harmonie de Frontenaud - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Mentions Légales -->
+    <div id="legal-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="glass-effect rounded-3xl max-w-4xl w-full max-h-96 overflow-y-auto shadow-2xl">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-gris-elegant">Mentions Légales</h2>
+                    <button onclick="closeLegalNotice()" class="text-gray-500 hover:text-gris-elegant transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-gris-elegant space-y-6 leading-relaxed">
+                    <p class="text-center font-semibold text-xl text-gris-elegant mb-8">En vigueur au 01/01/2025</p>
+                    
+                    <p>Il est porté à la connaissance des utilisateurs et visiteurs, du site harmoniedefrontenaud.fr, les présentes mentions légales.</p>
+                    
+                    <p>La connexion et la navigation sur le Site par l'Utilisateur implique acceptation intégrale et sans réserve des présentes mentions légales.</p>
+                    
+                    <p>Ces dernières sont accessibles sur le Site à la rubrique « Mentions légales ».</p>
+                    
+                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 1 - L'ÉDITEUR</h3>
+                    <p>L'édition du Site est assurée par la <strong>Société Musicale de Frontenaud</strong>, siren numéro <strong>449993872</strong> dont le siège social est situé Place de la Mairie, 71580 Frontenaud, Adresse e-mail : contact@harmoniedefrontenaud.fr. N° de TVA intracommunautaire : <strong>FR36449993872</strong>. Le Directeur de la publication est <strong>Michaël BOULON</strong>.</p>
+                    
+                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 2 - L'HÉBERGEUR</h3>
+                    <p>L'hébergeur du Site est la société <strong>Google LLC</strong>, dont le siège social est situé à : Googleplex, Mountain View, États-Unis.</p>
+                    
+                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 3 - ACCÈS AU SITE</h3>
+                    <p>Le Site est accessible en tout endroit, 7j/7, 24h/24 sauf cas de force majeure, interruption programmée ou non et pouvant découlant d'une nécessité de maintenance.</p>
+                    <p>En cas de modification, interruption ou suspension du Site, l'Editeur ne saurait être tenu responsable.</p>
+                    
+                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 4 - COLLECTE DES DONNÉES</h3>
+                    <p>Le site est exempté de déclaration à la Commission Nationale Informatique et Libertés (CNIL) dans la mesure où il ne collecte aucune donnée concernant les utilisateurs.</p>
+                    <p>Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du Site, sans autorisation de l'Editeur est prohibée et pourra entraîner des actions et poursuites judiciaires telles que notamment prévues par le Code de la propriété intellectuelle et le Code civil.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 'accueil';
+
+        function showPage(pageId) {
+            // Masquer toutes les pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Afficher la page demandée
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            
+            // Mettre à jour la navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Activer le lien de la page courante
+            event.target.classList.add('active');
+            
+            currentPage = pageId;
+            
+            // Réinitialiser les animations
+            setTimeout(() => {
+                initAnimations();
+            }, 100);
+            
+            // Scroll vers le haut avec animation fluide
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showLegalNotice() {
+            document.getElementById('legal-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLegalNotice() {
+            document.getElementById('legal-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function initAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.classList.remove('visible');
+                observer.observe(el);
+            });
+        }
+
+        // Fermer le modal en cliquant à l'extérieur
+        document.getElementById('legal-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeLegalNotice();
+            }
+        });
+
+        // Gestion du clavier pour l'accessibilité
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLegalNotice();
+                toggleMobileMenu();
+            }
+        });
+
+        // Initialiser les animations au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            initAnimations();
+            
+            // Animation d'entrée pour le header
+            setTimeout(() => {
+                document.querySelector('header').style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Effet parallaxe léger sur le hero
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-gradient');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'993021d5d629f100',t:'MTc2MTIxMDk1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
