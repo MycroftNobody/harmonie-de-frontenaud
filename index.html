@@ -11,6 +11,8 @@
             theme: {
                 extend: {
                     colors: {
+                        'rose-framboise': '#C21E56',
+                        'bleu-noir': '#1E2530',
                         'bleu-ciel': '#87CEEB',
                         'bleu-ciel-dark': '#4682B4',
                         'vert-prairie': '#7CB342',
@@ -54,7 +56,7 @@
             background-image: url("https://github.com/MycroftNobody/harmonie-de-frontenaud/raw/f1ade70a9630cb9b220fdc111ebe5ab52f3ad53a/photo_ensemble_2026");
             background-size: cover;       /* L'image couvre toute la section */
             background-position: center;  /* L'image est centrée */
-            background-repeat: no-repeat; /* L'image ne se répète pas */
+            background-repeat: no-repeat; /* L'image ne se remplète pas */
             position: relative;
             overflow: hidden;
         }
@@ -100,7 +102,7 @@
         }
         
         .text-gradient {
-            background: linear-gradient(135deg, #4682B4, #558B2F);
+            background: linear-gradient(135deg, #1E2530, #C21E56);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -118,7 +120,7 @@
             left: 50%;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #87CEEB, #7CB342);
+            background: linear-gradient(90deg, #1E2530, #C21E56);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
@@ -140,7 +142,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #87CEEB, #7CB342, #FFD54F);
+            background: linear-gradient(to bottom, #1E2530, #C21E56);
         }
         
         .timeline-dot {
@@ -151,8 +153,8 @@
             height: 18px;
             border-radius: 50%;
             background: white;
-            border: 3px solid #4682B4;
-            box-shadow: 0 0 0 4px rgba(70, 130, 180, 0.1);
+            border: 3px solid #C21E56;
+            box-shadow: 0 0 0 4px rgba(194, 30, 86, 0.1);
         }
         
         @keyframes float {
@@ -185,10 +187,10 @@
         
         @keyframes glow {
             from {
-                box-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+                box-shadow: 0 0 20px rgba(194, 30, 86, 0.3);
             }
             to {
-                box-shadow: 0 0 30px rgba(135, 206, 235, 0.6);
+                box-shadow: 0 0 30px rgba(194, 30, 86, 0.6);
             }
         }
         
@@ -208,7 +210,7 @@
         
         .section-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, #87CEEB, #7CB342, #FFD54F, transparent);
+            background: linear-gradient(90deg, transparent, #1E2530, #C21E56, transparent);
             margin: 4rem 0;
         }
         
@@ -231,6 +233,11 @@
         .pricing-card:hover::before {
             left: 100%;
         }
+
+        /* Modification unique : Unification globale des arrière-plans */
+        body, .page-content section:not(.hero-gradient) {
+            background: linear-gradient(135deg, #F5F5F5 0%, #EBF3F8 100%) !important;
+        }
     </style>
 </head>
 <body class="h-full bg-gradient-to-br from-gray-50 to-blue-50 font-sans">
@@ -242,20 +249,20 @@
                     <img src="https://raw.githubusercontent.com/MycroftNobody/harmonie-de-frontenaud/362f60f8f8357fa2f4b491fc4a70168da8e9ad10/Logo-2024-_1_.png" alt="Logo Harmonie de Frontenaud" class="w-20 mr-4 group-hover:scale-110 transition-transform duration-300">
                     
                     <div>
-                        <h1 class="text-xl font-bold text-gris-elegant">Harmonie de Frontenaud</h1>
+                        <h1 class="text-xl font-bold text-rose-framboise">Harmonie de Frontenaud</h1>
                         <p class="text-sm text-gray-500 font-light">Société Musicale depuis 1923</p>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <button onclick="showPage('accueil')" class="nav-link active text-bleu-ciel-dark px-4 py-2 text-sm font-medium">Accueil</button>
-                        <button onclick="showPage('histoire')" class="nav-link text-gris-elegant hover:text-bleu-ciel-dark px-4 py-2 text-sm font-medium">Notre Histoire</button>
-                        <button onclick="showPage('ecole')" class="nav-link text-gris-elegant hover:text-bleu-ciel-dark px-4 py-2 text-sm font-medium">École de Musique</button>
-                        <button onclick="showPage('contact')" class="nav-link text-gris-elegant hover:text-bleu-ciel-dark px-4 py-2 text-sm font-medium">Contact</button>
+                        <button onclick="showPage('accueil')" class="nav-link active text-rose-framboise px-4 py-2 text-sm font-medium">Accueil</button>
+                        <button onclick="showPage('histoire')" class="nav-link text-gris-elegant hover:text-rose-framboise px-4 py-2 text-sm font-medium">Notre Histoire</button>
+                        <button onclick="showPage('ecole')" class="nav-link text-gris-elegant hover:text-rose-framboise px-4 py-2 text-sm font-medium">École de Musique</button>
+                        <button onclick="showPage('contact')" class="nav-link text-gris-elegant hover:text-rose-framboise px-4 py-2 text-sm font-medium">Contact</button>
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-gris-elegant hover:text-bleu-ciel-dark focus:outline-none transition-colors">
+                    <button onclick="toggleMobileMenu()" class="text-gris-elegant hover:text-rose-framboise focus:outline-none transition-colors">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -264,10 +271,10 @@
             </div>
             <div id="mobile-menu" class="md:hidden hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/90 backdrop-blur-sm rounded-b-2xl">
-                    <button onclick="showPage('accueil'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">Accueil</button>
-                    <button onclick="showPage('histoire'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">Notre Histoire</button>
-                    <button onclick="showPage('ecole'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">École de Musique</button>
-                    <button onclick="showPage('contact'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-bleu-ciel-dark hover:bg-blue-50 rounded-xl w-full text-left transition-all">Contact</button>
+                    <button onclick="showPage('accueil'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-rose-framboise hover:bg-blue-50 rounded-xl w-full text-left transition-all">Accueil</button>
+                    <button onclick="showPage('histoire'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-rose-framboise hover:bg-blue-50 rounded-xl w-full text-left transition-all">Notre Histoire</button>
+                    <button onclick="showPage('ecole'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-rose-framboise hover:bg-blue-50 rounded-xl w-full text-left transition-all">École de Musique</button>
+                    <button onclick="showPage('contact'); toggleMobileMenu()" class="nav-btn-mobile block px-4 py-3 text-base font-medium text-gris-elegant hover:text-rose-framboise hover:bg-blue-50 rounded-xl w-full text-left transition-all">Contact</button>
                 </div>
             </div>
         </nav>
@@ -281,7 +288,7 @@
                         
                         <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-normal">
                             Harmonie de<br>
-                            <span class="text-bleu-ciel">Frontenaud</span>
+                            <span class="text-rose-framboise">Frontenaud</span>
                         </h1>
 
                         <div class="text-xl md:text-2xl mb-12 italic max-w-5xl mx-auto leading-relaxed font-light bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
@@ -302,7 +309,7 @@
                     <div class="fade-in text-center mb-16">
                         <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-8">Une histoire centenaire...</h2>
                         <div class="max-w-5xl mx-auto text-xl text-gris-elegant leading-relaxed font-light">
-                            <p class="mb-8">Depuis plus de 100 ans, l'Harmonie de Frontenaud fait vivre la musique au cœur de notre village. Née de la passion de musiciens engagés, elle réunit aujourd'hui <span class="font-semibold text-bleu-ciel-dark">31 membres</span> unis par l'amour de la musique et du partage.</p>
+                            <p class="mb-8">Depuis plus de 100 ans, l'Harmonie de Frontenaud fait vivre la musique au cœur de notre village. Née de la passion de musiciens engagés, elle réunit aujourd'hui <span class="font-semibold text-rose-framboise">31 membres</span> unis par l'amour de la musique et du partage.</p>
                             <p class="text-lg">Une tradition vivante, portée par des générations de bénévoles et de passionnés.</p>
                         </div>
                     </div>
@@ -313,7 +320,7 @@
             <section class="py-24 bg-gradient-to-br from-blue-50 to-green-50">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="fade-in text-center mb-16">
-                        <h2 class="text-4xl font-bold text-gris-elegant mb-8">Concert du Centenaire</h2>
+                        <h2 class="text-4xl font-bold text-rose-framboise mb-8">Concert du Centenaire</h2>
                         <p class="text-xl text-gris-elegant mb-12 font-light max-w-3xl mx-auto">Revivez les moments forts de notre concert exceptionnel célébrant 100 ans d'histoire musicale</p>
                         <div class="max-w-5xl mx-auto">
                             <div class="video-container relative w-full rounded-3xl overflow-hidden shadow-2xl" style="padding-bottom: 56.25%;">
@@ -335,38 +342,38 @@
             <section class="py-24 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="fade-in">
-                        <h2 class="text-4xl font-bold text-gris-elegant text-center mb-16">Nos prochaines dates</h2>
+                        <h2 class="text-4xl font-bold text-rose-framboise text-center mb-16">Nos prochaines dates</h2>
                         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                             <div class="gradient-border card-hover p-8 text-center group relative z-10">
                                 <div class="relative z-20">
-                                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎖️</div>
-                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Commémoration du 8 mai</h3>
-                                    <p class="text-bleu-ciel-dark font-semibold mb-2">Dimanche 10 mai 2026</p>
-                                    <p class="text-sm text-gray-500">Monument aux morts de Frontenaud</p>
-                                </div>
-                            </div>
-                            <div class="gradient-border card-hover p-8 text-center group relative z-10">
-                                <div class="relative z-20">
                                     <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎉</div>
-                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Fête de la musique</h3>
-                                    <p class="text-vert-prairie-dark font-semibold mb-2">Samedi 20 juin 2026</p>
-                                    <p class="text-sm text-gray-500">Lieu à définir</p>
+                                    <h3 class="font-bold text-xl mb-4 text-rose-framboise">Fête de la musique</h3>
+                                    <p class="text-rose-framboise font-semibold mb-2">Samedi 20 juin 2026</p>
+                                    <p class="text-sm text-gray-500">au Maquis de Saffre à 19h30</p>
                                 </div>
                             </div>
                             <div class="gradient-border card-hover p-8 text-center group relative z-10">
                                 <div class="relative z-20">
                                     <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎶</div>
-                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Concert feux d'artifice</h3>
-                                    <p class="text-jaune-mais-dark font-semibold mb-2">Dimanche 26 juillet 2026</p>
+                                    <h3 class="font-bold text-xl mb-4 text-rose-framboise">Concert feux d'artifice</h3>
+                                    <p class="text-rose-framboise font-semibold mb-2">Dimanche 26 juillet 2026</p>
                                     <p class="text-sm text-gray-500">Stade de Frontenaud</p>
                                 </div>
                             </div>
                             <div class="gradient-border card-hover p-8 text-center group relative z-10">
                                 <div class="relative z-20">
                                     <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🏫</div>
-                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Inscriptions école de musique</h3>
-                                    <p class="text-bleu-ciel-dark font-semibold mb-2">Samedi 5 septembre 2026</p>
+                                    <h3 class="font-bold text-xl mb-4 text-rose-framboise">Inscriptions école de musique</h3>
+                                    <p class="text-rose-framboise font-semibold mb-2">Samedi 5 septembre 2026</p>
                                     <p class="text-sm text-gray-500">Salle Michel Vandroux à Frontenaud</p>
+                                </div>
+                            </div>
+                            <div class="gradient-border card-hover p-8 text-center group relative z-10">
+                                <div class="relative z-20">
+                                    <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🎖️</div>
+                                    <h3 class="font-bold text-xl mb-4 text-rose-framboise">Vente de pizzas au feu de bois</h3>
+                                    <p class="text-rose-framboise font-semibold mb-2">Samedi 26 septembre 2026</p>
+                                    <p class="text-sm text-gray-500">Salle polyvalente de Frontenaud</p>
                                 </div>
                             </div>
                         </div>
@@ -375,7 +382,6 @@
             </section>
         </div>
 
-        <!-- Page Notre Histoire -->
         <div id="page-histoire" class="page-content hidden">
             <section class="py-24 bg-gradient-to-br from-blue-50 to-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -390,29 +396,29 @@
                             <div class="gradient-border p-10 relative z-10">
                                 <div class="relative z-20">
                                     <div class="flex items-center mb-6">
-                                        <div class="bg-gradient-to-r from-bleu-ciel-dark to-bleu-ciel text-white rounded-2xl w-20 h-20 flex items-center justify-center text-2xl font-bold mr-8 shadow-lg">1923</div>
-                                        <h2 class="text-3xl font-bold text-gris-elegant">Création de l'Harmonie de Frontenaud</h2>
+                                        <div class="bg-gradient-to-r from-rose-framboise to-rose-framboise text-white rounded-2xl w-20 h-20 flex items-center justify-center text-2xl font-bold mr-8 shadow-lg">1923</div>
+                                        <h2 class="text-3xl font-bold text-rose-framboise">Création de l'Harmonie de Frontenaud</h2>
                                     </div>
                                     <div class="text-gris-elegant leading-relaxed text-lg font-light space-y-4">
-                                        <p>L'Harmonie de Frontenaud est née au début du XXè siècle sous l'impulsion de <strong class="text-bleu-ciel-dark">Joseph Lonjarret</strong>, un frontenalien jardinier de profession. Le groupe s'est dans un premier temps formé de manière informelle, sans structure officielle. La première sortie publique de l'harmonie ainsi constituée, composée alors d'une vingtaine de musiciens, a eu lieu en 1922 lors de l'inauguration du monument aux morts.</p>
-                                        <p>Sous l'initiative de l'ancien maire, Monsieur Badot, et de son secrétaire (également instituteur) Eugène Gandroz, l'Harmonie a été officiellement constituée le <strong class="text-bleu-ciel-dark">13 mai 1923</strong>, avec l'enregistrement de ses statuts à la sous-préfecture de Louhans.</p>
+                                        <p>L'Harmonie de Frontenaud est née au début du XXè siècle sous l'impulsion de <strong class="text-rose-framboise">Joseph Lonjarret</strong>, un frontenalien jardinier de profession. Le groupe s'est dans un premier temps formé de manière informelle, sans structure officielle. La première sortie publique de l'harmonie ainsi constituée, composée alors d'une vingtaine de musiciens, a eu lieu en 1922 lors de l'inauguration du monument aux morts.</p>
+                                        <p>Sous l'initiative de l'ancien maire, Monsieur Badot, et de son secrétaire (également instituteur) Eugène Gandroz, l'Harmonie a été officiellement constituée le <strong class="text-rose-framboise">13 mai 1923</strong>, avec l'enregistrement de ses statuts à la sous-préfecture de Louhans.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="fade-in timeline-item">
-                            <div class="timeline-dot" style="border-color: #558B2F;"></div>
+                            <div class="timeline-dot" style="border-color: #C21E56;"></div>
                             <div class="gradient-border p-10 relative z-10">
                                 <div class="relative z-20">
                                     <div class="flex items-center mb-6">
-                                        <div class="bg-gradient-to-r from-vert-prairie-dark to-vert-prairie text-white rounded-2xl w-20 h-20 flex items-center justify-center text-2xl font-bold mr-8 shadow-lg">1970</div>
-                                        <h2 class="text-3xl font-bold text-gris-elegant">La renaissance</h2>
+                                        <div class="bg-gradient-to-r from-rose-framboise to-rose-framboise text-white rounded-2xl w-20 h-20 flex items-center justify-center text-2xl font-bold mr-8 shadow-lg">1970</div>
+                                        <h2 class="text-3xl font-bold text-rose-framboise">La renaissance</h2>
                                     </div>
                                     <div class="text-gris-elegant leading-relaxed text-lg font-light space-y-4">
                                         <p>Au fil des années, les chefs et présidents se sont succédé, marquant chacun à leur manière l'histoire de l'Harmonie. En 1970, l'Harmonie fût confrontée à une période difficile : faute de musiciens, la dissolution a semblé un temps, inévitable...</p>
-                                        <p>C'était sans compter sur la volonté indéfectible de <strong class="text-vert-prairie-dark">Michel Vandroux</strong>, qui sera également maire de Frontenaud pendant 20 ans, qui, avec une poignée de musiciens passionnés, a su redonner vie à l'ensemble.</p>
-                                        <p>Grâce à son énergie et à son dévouement, il dirigera l'Harmonie pendant <strong class="text-vert-prairie-dark">45 ans</strong>, devenant ainsi l'âme même de notre groupe et certainement le membre le plus engagé et fidèle que nous ayons connu. Son implication allant bien au-delà de la direction de l'orchestre ; il assurera aussi les cours de solfège et de trompette à l'école de musique, insufflant une passion contagieuse à chaque élève.</p>
+                                        <p>C'était sans compter sur la volonté indéfectible de <strong class="text-rose-framboise">Michel Vandroux</strong>, qui sera également maire de Frontenaud pendant 20 ans, qui, avec une poignée de musiciens passionnés, a su redonner vie à l'ensemble.</p>
+                                        <p>Grâce à son énergie et à son dévouement, il dirigera l'Harmonie pendant <strong class="text-rose-framboise">45 ans</strong>, devenant ainsi l'âme même de notre groupe et certainement le membre le plus engagé et fidèle que nous ayons connu. Son implication allant bien au-delà de la direction de l'orchestre ; il assurera aussi les cours de solfège et de trompette à l'école de musique, insufflant une passion contagieuse à chaque élève.</p>
                                         <p>En hommage à son incroyable dévouement, notre salle de répétitions porte aujourd'hui son nom, un symbole de gratitude et de reconnaissance pour tout ce qu'il a apporté à notre Harmonie.</p>
                                     </div>
                                 </div>
@@ -420,31 +426,31 @@
                         </div>
 
                         <div class="fade-in timeline-item">
-                            <div class="timeline-dot" style="border-color: #FFA000;"></div>
+                            <div class="timeline-dot" style="border-color: #C21E56;"></div>
                             <div class="gradient-border p-10 relative z-10">
                                 <div class="relative z-20">
-                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8">L'Harmonie de Frontenaud : 100 ans d'histoire et de passion musicale</h2>
+                                    <h2 class="text-3xl font-bold text-rose-framboise mb-8">L'Harmonie de Frontenaud : 100 ans d'histoire et de passion musicale</h2>
                                     <div class="text-gris-elegant leading-relaxed text-lg font-light space-y-6">
-                                        <p>Aujourd'hui, l'Harmonie de Frontenaud réunit <strong class="text-jaune-mais-dark">30 musiciens</strong>, unis par la même passion et la même envie de transmettre l'art musical. Grâce à l'école de musique, tous ceux qui souhaitent apprendre la musique, peuvent rejoindre « nos rangs ». Plus de 100 ans d'histoire ont été célébrés en 2023 par un concert exceptionnel rassemblant plus de 100 musiciens à Frontenaud, une occasion mémorable de fêter ce siècle de musique.</p>
+                                        <p>Aujourd'hui, l'Harmonie de Frontenaud réunit <strong class="text-rose-framboise">31 musiciens</strong>, unis by la même passion et la même envie de transmettre l'art musical. Grâce à l'école de musique, tous ceux qui souhaitent apprendre la musique, peuvent rejoindre « nos rangs ». Plus de 100 ans d'histoire ont été célébrés en 2023 par un concert exceptionnel rassemblant plus de 100 musiciens à Frontenaud, une occasion mémorable de fêter ce siècle de musique.</p>
                                         
                                         <div class="bg-white rounded-2xl p-8 mt-8 border border-gray-200 shadow-sm">
-                                            <h3 class="font-bold text-xl mb-4 text-gris-elegant">Les événements musicaux de l'Harmonie : un partage de passion et de convivialité</h3>
+                                            <h3 class="font-bold text-xl mb-4 text-rose-framboise">Les événements musicaux de l'Harmonie : un partage de passion et de convivialité</h3>
                                             <div class="grid md:grid-cols-2 gap-4">
                                                 <ul class="space-y-3">
-                                                    <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Concerts de printemps</li>
-                                                    <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎶</span> Fête de la musique</li>
-                                                    <li class="flex items-center"><span class="text-jaune-mais-dark mr-2">🎺</span> Fête patronale</li>
+                                                    <li class="flex items-center"><span class="text-rose-framboise mr-2">🎵</span> Concerts de printemps</li>
+                                                    <li class="flex items-center"><span class="text-rose-framboise mr-2">🎶</span> Fête de la musique</li>
+                                                    <li class="flex items-center"><span class="text-rose-framboise mr-2">🎺</span> Fête patronale</li>
                                                 </ul>
                                                 <ul class="space-y-3">
-                                                    <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎖️</span> Commémorations</li>
-                                                    <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎼</span> Sainte-Cécile</li>
+                                                    <li class="flex items-center"><span class="text-rose-framboise mr-2">🎖️</span> Commémorations</li>
+                                                    <li class="flex items-center"><span class="text-rose-framboise mr-2">🎼</span> Sainte-Cécile</li>
                                                 </ul>
                                             </div>
-                                            <p class="mt-6 italic text-gris-elegant">Les rendez-vous sont nombreux, et chaque événement permet aux Frontenaliens, ainsi qu'aux musiciens et habitants de Bresse et d'ailleurs, de partager ensemble un moment musical.</p>
+                                            <p class="mt-6 italic text-gris-elegant">Les rendez-vous sont nombreux, et chaque événement permet aux Frontenaliens, ainsi qu'aux musiciens et habitants de Bresse et d'ailleurs, de partage ensemble un moment musical.</p>
                                         </div>
                                         
                                         <div class="mt-10">
-                                            <h3 class="font-bold text-xl mb-4 text-gris-elegant">Un siècle de passion grâce à l'engagement de chacun</h3>
+                                            <h3 class="font-bold text-xl mb-4 text-rose-framboise">Un siècle de passion grâce à l'engagement de chacun</h3>
                                             <p>L'Harmonie de Frontenaud existe depuis plus d'un siècle grâce à la passion des générations successives de musiciens, mais aussi de ceux qui ont su porter cet ensemble devenu une véritable institution dans notre village. À tous ceux qui, par leur travail, leur dévouement et leur engagement, ont permis à cette aventure de perdurer, nous adressons un immense merci. Que chacun, qu'il soit musicien, membre honoraire ou bénévole, sache à quel point sa contribution est précieuse pour faire vivre, encore longtemps, notre belle association.</p>
                                         </div>
                                     </div>
@@ -456,7 +462,6 @@
             </section>
         </div>
 
-        <!-- Page École de Musique -->
         <div id="page-ecole" class="page-content hidden">
             <section class="py-24 bg-gradient-to-br from-yellow-50 to-blue-50">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -469,27 +474,27 @@
                         <div class="fade-in space-y-12">
                             <div class="gradient-border p-10 relative z-10">
                                 <div class="relative z-20">
-                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8 flex items-center">
+                                    <h2 class="text-3xl font-bold text-rose-framboise mb-8 flex items-center">
                                         <span class="text-4xl mr-4">📅</span> Inscriptions
                                     </h2>
-                                    <p class="text-gris-elegant mb-6 text-lg font-light">Les inscriptions ont lieu tous les ans le <strong class="text-bleu-ciel-dark">premier samedi de septembre</strong> à Frontenaud.</p>
+                                    <p class="text-gris-elegant mb-6 text-lg font-light">Les inscriptions ont lieu tous les ans le <strong class="text-rose-framboise">premier samedi de septembre</strong> à Frontenaud.</p>
                                     
-                                    <h3 class="font-bold text-xl mb-4 text-gris-elegant">Informations pour le jour de l'inscription :</h3>
+                                    <h3 class="font-bold text-xl mb-4 text-rose-framboise">Informations pour le jour de l'inscription :</h3>
                                     <div class="space-y-4">
                                         <div class="flex items-start">
-                                            <div class="w-2 h-2 bg-bleu-ciel rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <div class="w-2 h-2 bg-rose-framboise rounded-full mt-3 mr-4 flex-shrink-0"></div>
                                             <p class="text-gris-elegant">L'élève mineur doit être accompagné par son responsable légal</p>
                                         </div>
                                         <div class="flex items-start">
-                                            <div class="w-2 h-2 bg-vert-prairie rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <div class="w-2 h-2 bg-rose-framboise rounded-full mt-3 mr-4 flex-shrink-0"></div>
                                             <p class="text-gris-elegant">Le niveau de l'élève détermine la formule (1, 2, 3 ou 4)</p>
                                         </div>
                                         <div class="flex items-start">
-                                            <div class="w-2 h-2 bg-jaune-mais rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <div class="w-2 h-2 bg-rose-framboise rounded-full mt-3 mr-4 flex-shrink-0"></div>
                                             <p class="text-gris-elegant">Les élèves n'ayant jamais suivi de formation musicale doivent obligatoirement débuter par la Formule 1</p>
                                         </div>
                                         <div class="flex items-start">
-                                            <div class="w-2 h-2 bg-bleu-ciel rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                                            <div class="w-2 h-2 bg-rose-framboise rounded-full mt-3 mr-4 flex-shrink-0"></div>
                                             <p class="text-gris-elegant">L'année suivante, la formation instrumentale peut débuter</p>
                                         </div>
                                     </div>
@@ -498,33 +503,33 @@
 
                             <div class="gradient-border p-10 relative z-10">
                                 <div class="relative z-20">
-                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8 flex items-center">
+                                    <h2 class="text-3xl font-bold text-rose-framboise mb-8 flex items-center">
                                         <span class="text-4xl mr-4">🎼</span> Instruments Enseignés
                                     </h2>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                                            <h3 class="font-bold text-lg mb-4 text-bleu-ciel-dark">Bois</h3>
+                                            <h3 class="font-bold text-lg mb-4 text-rose-framboise">Bois</h3>
                                             <ul class="space-y-2">
-                                                <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Flûte traversière</li>
-                                                <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Clarinette</li>
-                                                <li class="flex items-center"><span class="text-bleu-ciel-dark mr-2">🎵</span> Saxophone</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎵</span> Flûte traversière</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎵</span> Clarinette</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎵</span> Saxophone</li>
                                             </ul>
                                         </div>
                                         <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                                            <h3 class="font-bold text-lg mb-4 text-vert-prairie-dark">Cuivres</h3>
+                                            <h3 class="font-bold text-lg mb-4 text-rose-framboise">Cuivres</h3>
                                             <ul class="space-y-2">
-                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Trompette</li>
-                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Bugle</li>
-                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Euphonium</li>
-                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Tuba</li>
-                                                <li class="flex items-center"><span class="text-vert-prairie-dark mr-2">🎺</span> Trombone</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎺</span> Trompette</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎺</span> Bugle</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎺</span> Euphonium</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎺</span> Tuba</li>
+                                                <li class="flex items-center"><span class="text-rose-framboise mr-2">🎺</span> Trombone</li>
                                             </ul>
                                         </div>
                                         <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 md:col-span-2">
-                                            <h3 class="font-bold text-lg mb-4 text-jaune-mais-dark">Percussions</h3>
+                                            <h3 class="font-bold text-lg mb-4 text-rose-framboise">Percussions</h3>
                                             <div class="flex flex-wrap gap-4">
-                                                <span class="flex items-center"><span class="text-jaune-mais-dark mr-2">🥁</span> Batterie</span>
-                                                <span class="flex items-center"><span class="text-jaune-mais-dark mr-2">🥁</span> Percussions</span>
+                                                <span class="flex items-center"><span class="text-rose-framboise mr-2">🥁</span> Batterie</span>
+                                                <span class="flex items-center"><span class="text-rose-framboise mr-2">🥁</span> Percussions</span>
                                             </div>
                                         </div>
                                     </div>
@@ -535,7 +540,7 @@
                         <div class="fade-in">
                             <div class="gradient-border p-10 relative z-10">
                                 <div class="relative z-20">
-                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8 flex items-center">
+                                    <h2 class="text-3xl font-bold text-rose-framboise mb-8 flex items-center">
                                         <span class="text-4xl mr-4">💰</span> Tarifs
                                     </h2>
                                     
@@ -543,60 +548,60 @@
                                         <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="flex justify-between items-center">
                                                 <div>
-                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°1</h3>
+                                                    <h3 class="font-bold text-lg text-rose-framboise">Formule n°1</h3>
                                                     <p class="text-sm text-gris-elegant">Formation musicale</p>
                                                 </div>
-                                                <span class="font-bold text-2xl text-bleu-ciel-dark">156 €<span class="text-sm font-normal"> / an</span></span>
+                                                <span class="font-bold text-2xl text-rose-framboise">156 €<span class="text-sm font-normal"> / an</span></span>
                                             </div>
                                         </div>
                                         
                                         <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="flex justify-between items-center">
                                                 <div>
-                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°2</h3>
+                                                    <h3 class="font-bold text-lg text-rose-framboise">Formule n°2</h3>
                                                     <p class="text-sm text-gris-elegant">Formation musicale + instrumentale 30 min</p>
                                                 </div>
-                                                <span class="font-bold text-2xl text-vert-prairie-dark">222 €<span class="text-sm font-normal"> / an</span></span>
+                                                <span class="font-bold text-2xl text-rose-framboise">222 €<span class="text-sm font-normal"> / an</span></span>
                                             </div>
                                         </div>
                                         
                                         <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="flex justify-between items-center">
                                                 <div>
-                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°3</h3>
+                                                    <h3 class="font-bold text-lg text-rose-framboise">Formule n°3</h3>
                                                     <p class="text-sm text-gris-elegant">Formation musicale + instrumentale 45 min</p>
                                                 </div>
-                                                <span class="font-bold text-2xl text-jaune-mais-dark">267 €<span class="text-sm font-normal"> / an</span></span>
+                                                <span class="font-bold text-2xl text-rose-framboise">267 €<span class="text-sm font-normal"> / an</span></span>
                                             </div>
                                         </div>
                                         
                                         <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="flex justify-between items-center">
                                                 <div>
-                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°4</h3>
+                                                    <h3 class="font-bold text-lg text-rose-framboise">Formule n°4</h3>
                                                     <p class="text-sm text-gris-elegant">Formation instrumentale seule</p>
                                                 </div>
-                                                <span class="font-bold text-2xl text-bleu-ciel-dark">198 €<span class="text-sm font-normal"> / an</span></span>
+                                                <span class="font-bold text-2xl text-rose-framboise">198 €<span class="text-sm font-normal"> / an</span></span>
                                             </div>
                                         </div>
                                         
                                         <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="flex justify-between items-center">
                                                 <div>
-                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°5</h3>
+                                                    <h3 class="font-bold text-lg text-rose-framboise">Formule n°5</h3>
                                                     <p class="text-sm text-gris-elegant">Seconde formation instrumentale</p>
                                                 </div>
-                                                <span class="font-bold text-2xl text-vert-prairie-dark">114 €<span class="text-sm font-normal"> / an</span></span>
+                                                <span class="font-bold text-2xl text-rose-framboise">114 €<span class="text-sm font-normal"> / an</span></span>
                                             </div>
                                         </div>
                                         
                                         <div class="pricing-card bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="flex justify-between items-center">
                                                 <div>
-                                                    <h3 class="font-bold text-lg text-gris-elegant">Formule n°6</h3>
+                                                    <h3 class="font-bold text-lg text-rose-framboise">Formule n°6</h3>
                                                     <p class="text-sm text-gris-elegant">Orchestre seul</p>
                                                 </div>
-                                                <span class="font-bold text-2xl text-jaune-mais-dark">90 €<span class="text-sm font-normal"> / an</span></span>
+                                                <span class="font-bold text-2xl text-rose-framboise">90 €<span class="text-sm font-normal"> / an</span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -615,7 +620,6 @@
             </section>
         </div>
 
-        <!-- Page Contact -->
         <div id="page-contact" class="page-content hidden">
             <section class="py-24 bg-gradient-to-br from-green-50 to-blue-50">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -629,12 +633,12 @@
                             <div class="gradient-border p-10 text-center group card-hover relative z-10">
                                 <div class="relative z-20">
                                     <div class="text-6xl mb-8 group-hover:scale-110 transition-transform duration-300">📧</div>
-                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8">Nous écrire</h2>
+                                    <h2 class="text-3xl font-bold text-rose-framboise mb-8">Nous écrire</h2>
                                     <div class="space-y-6">
                                         <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="text-center">
-                                                <p class="font-semibold text-gris-elegant text-lg mb-2">Email</p>
-                                                <a href="mailto:contact@harmoniedefrontenaud.fr" class="text-bleu-ciel-dark hover:text-bleu-ciel transition-colors text-lg">contact@harmoniedefrontenaud.fr</a>
+                                                <p class="font-semibold text-rose-framboise text-lg mb-2">Email</p>
+                                                <a href="mailto:contact@harmoniedefrontenaud.fr" class="text-rose-framboise hover:text-rose-framboise transition-colors text-lg">contact@harmoniedefrontenaud.fr</a>
                                             </div>
                                         </div>
                                     </div>
@@ -644,11 +648,11 @@
                             <div class="gradient-border p-10 text-center group card-hover relative z-10">
                                 <div class="relative z-20">
                                     <div class="text-6xl mb-8 group-hover:scale-110 transition-transform duration-300">📍</div>
-                                    <h2 class="text-3xl font-bold text-gris-elegant mb-8">Nous trouver</h2>
+                                    <h2 class="text-3xl font-bold text-rose-framboise mb-8">Nous trouver</h2>
                                     <div class="space-y-6">
                                         <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
                                             <div class="text-center">
-                                                <p class="font-semibold text-gris-elegant text-lg mb-2">Adresse</p>
+                                                <p class="font-semibold text-rose-framboise text-lg mb-2">Adresse</p>
                                                 <p class="text-gris-elegant text-lg leading-relaxed">Place de la Mairie<br>71580 Frontenaud<br>FRANCE</p>
                                             </div>
                                         </div>
@@ -663,7 +667,7 @@
         <div class="fade-in gradient-border p-10 text-center group card-hover relative z-10 mt-12">
                             <div class="relative z-20">
                                 <div class="text-6xl mb-8 group-hover:scale-110 transition-transform duration-300">🗺️</div>
-                                <h2 class="text-3xl font-bold text-gris-elegant mb-8">Nous situer</h2>
+                                <h2 class="text-3xl font-bold text-rose-framboise mb-8">Nous situer</h2>
                                 <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                                     <iframe 
                                         src="https://maps.google.com/maps?q=46.552442919038675,5.293439122572403&hl=fr&z=15&output=embed" 
@@ -694,27 +698,26 @@
                 <div>
                     <h3 class="text-xl font-bold mb-6">Contact</h3>
                     <p class="text-gray-300">
-                        <a href="mailto:contact@harmoniedefrontenaud.fr" class="hover:text-bleu-ciel transition-colors">contact@harmoniedefrontenaud.fr</a>
+                        <a href="mailto:contact@harmoniedefrontenaud.fr" class="hover:text-rose-framboise transition-colors">contact@harmoniedefrontenaud.fr</a>
                     </p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-6">Informations légales</h3>
-                    <button onclick="showLegalNotice()" class="text-gray-300 hover:text-bleu-ciel transition-colors">Consulter les mentions légales</button>
+                    <button onclick="showLegalNotice()" class="text-gray-300 hover:text-rose-framboise transition-colors">Consulter les mentions légales</button>
                 </div>
             </div>
             <div class="section-divider mt-12 mb-8"></div>
             <div class="text-center text-gray-400">
-                <p>&copy; 2025 Harmonie de Frontenaud - Tous droits réservés</p>
+                <p>© 2026 Harmonie de Frontenaud - Tous droits réservés</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Mentions Légales -->
     <div id="legal-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
         <div class="glass-effect rounded-3xl max-w-4xl w-full max-h-96 overflow-y-auto shadow-2xl">
             <div class="p-8">
                 <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-bold text-gris-elegant">Mentions Légales</h2>
+                    <h2 class="text-3xl font-bold text-rose-framboise">Mentions Légales</h2>
                     <button onclick="closeLegalNotice()" class="text-gray-500 hover:text-gris-elegant transition-colors">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -722,7 +725,7 @@
                     </button>
                 </div>
                 <div class="text-gris-elegant space-y-6 leading-relaxed">
-                    <p class="text-center font-semibold text-xl text-gris-elegant mb-8">En vigueur au 01/01/2025</p>
+                    <p class="text-center font-semibold text-xl text-rose-framboise mb-8">En vigueur au 01/01/2025</p>
                     
                     <p>Il est porté à la connaissance des utilisateurs et visiteurs, du site harmoniedefrontenaud.fr, les présentes mentions légales.</p>
                     
@@ -730,18 +733,18 @@
                     
                     <p>Ces dernières sont accessibles sur le Site à la rubrique « Mentions légales ».</p>
                     
-                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 1 - L'ÉDITEUR</h3>
+                    <h3 class="font-bold text-rose-framboise text-lg mt-8 mb-4">ARTICLE 1 - L'ÉDITEUR</h3>
                     <p>L'édition du Site est assurée par la <strong>Société Musicale de Frontenaud</strong>, siren numéro <strong>449993872</strong> dont le siège social est situé Place de la Mairie, 71580 Frontenaud, Adresse e-mail : contact@harmoniedefrontenaud.fr. N° de TVA intracommunautaire : <strong>FR36449993872</strong>. Le Directeur de la publication est <strong>Michaël BOULON</strong>.</p>
                     
-                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 2 - L'HÉBERGEUR</h3>
+                    <h3 class="font-bold text-rose-framboise text-lg mt-8 mb-4">ARTICLE 2 - L'HÉBERGEUR</h3>
                     <p>L'hébergeur du Site est la société <strong>GitHub, Inc.</strong>, dont le siège social est situé au : 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis.</p>
                     
-                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 3 - ACCÈS AU SITE</h3>
+                    <h3 class="font-bold text-rose-framboise text-lg mt-8 mb-4">ARTICLE 3 - ACCÈS AU SITE</h3>
                     <p>Le Site est accessible en tout endroit, 7j/7, 24h/24 sauf cas de force majeure, interruption programmée ou non et pouvant découlant d'une nécessité de maintenance.</p>
                     <p>En cas de modification, interruption ou suspension du Site, l'Editeur ne saurait être tenu responsable.</p>
                     
-                    <h3 class="font-bold text-gris-elegant text-lg mt-8 mb-4">ARTICLE 4 - COLLECTE DES DONNÉES</h3>
-                    <p>Le site est exempté de déclaration à la Commission Nationale Informatique et Libertés (CNIL) dans la mesure où il ne collecte aucune donnée concernant les utilisateurs.</p>
+                    <h3 class="font-bold text-rose-framboise text-lg mt-8 mb-4">ARTICLE 4 - COLLECTE DES DONNÉES</h3>
+                    <p>Le site est exempté de déclaration à la Commission Nationale Informatique et Libertés (CNIL) dans la milieu où il ne collecte aucune donnée concernant les utilisateurs.</p>
                     <p>Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du Site, sans autorisation de l'Editeur est prohibée et pourra entraîner des actions et poursuites judiciaires telles que notamment prévues par le Code de la propriété intellectuelle et le Code civil.</p>
                 </div>
             </div>
@@ -852,4 +855,3 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'993021d5d629f100',t:'MTc2MTIxMDk1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
